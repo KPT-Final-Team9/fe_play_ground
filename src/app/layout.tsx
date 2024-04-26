@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { MswComponent } from '@/mocks/MswProvider';
+import { MSWComponent } from '@/mocks/MswProvider';
+import { Theme } from '@radix-ui/themes';
 import './globals.css';
-
+import '@radix-ui/themes/styles.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -17,8 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <MswComponent />
-      <body className={inter.className}>{children}</body>
+      <MSWComponent />
+      <body className={inter.className}>
+        <Theme>{children}</Theme>
+      </body>
     </html>
   );
 }

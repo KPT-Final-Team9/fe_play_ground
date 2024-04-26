@@ -2,6 +2,12 @@
 import { Button } from '@/components/ui/button';
 import React, { useRef } from 'react';
 import { Calendar } from '@/components/ui/calendar';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 function Page() {
   const buttonRef = useRef(null);
@@ -39,6 +45,17 @@ function Page() {
           </div>
         </div>
       </dialog>
+
+      <TooltipProvider
+        delayDuration={700}
+        skipDelayDuration={100}>
+        <Tooltip>
+          <TooltipTrigger>Hover</TooltipTrigger>
+          <TooltipContent side="right">
+            <p>Add to library</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </>
   );
 }

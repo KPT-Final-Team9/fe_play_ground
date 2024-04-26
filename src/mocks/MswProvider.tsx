@@ -1,24 +1,30 @@
 'use client';
-// TODO: client 사이드 질문
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-export const MswComponent = () => {
-  console.log('MswComp');
+// const isMockingMode = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled';
+const isMockingMode = true;
+
+export const MSWComponent = () => {
+  const [mswReady, setMSWReady] = useState(!isMockingMode);
+
   useEffect(() => {
-    if ('development' === 'development') {
-      if (typeof window === 'undefined') {
-        (async () => {
-          const { server } = await import('@/mocks/server');
-          server.listen();
-        })();
-      } else {
-        (async () => {
-          const { worker } = await import('@/mocks/browser');
-          worker.start();
-        })();
+    const init = async () => {
+      if (isMockingMode) {
+        // const { initMocks } = await import('./index');
+        const initMocks = await import('./index').then(res => res.initMocks);
+        await initMocks();
+        setMSWReady(true);
       }
+    };
+
+    if (!mswReady) {
+      init();
     }
-  });
+  }, [mswReady]);
+
+  if (!mswReady) {
+    return null;
+  }
 
   return null;
 };
