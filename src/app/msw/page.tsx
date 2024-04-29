@@ -60,7 +60,7 @@ export default function Page() {
         height={500}
       />
       <div>
-        <button onClick={fetchData}>fetchData</button>
+        <button onClick={fetchData}>fetchData!!</button>
       </div>
       <div>
         <button onClick={fetchDataCbs}>fetchDataCbs</button>
