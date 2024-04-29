@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 import { wait } from '@/serverActions';
+import Image from 'next/image';
 
 export default function Page() {
   async function waitf() {
@@ -41,6 +42,23 @@ export default function Page() {
 
   return (
     <div>
+      <Image
+        alt={'img'}
+        src={''}
+        width={500}
+        height={500}
+        onError={() =>
+          '/UnY4vuO6nU63HZPVv0C5gOmpcypcEiJ55Jkg-oEFOiaDHrjb5lG_8aLWEdVx6Gb4ltml5CHSRaLC4dcz-YEecgldtzhYmaXFBCLiGubm8cfVTHtF79rUOO65UuaKOa18_JoBGAJiNtHUaT-rBrZOlA.png'
+        }
+      />
+      <Image
+        alt={'img'}
+        src={
+          '/UnY4vuO6nU63HZPVv0C5gOmpcypcEiJ55Jkg-oEFOiaDHrjb5lG_8aLWEdVx6Gb4ltml5CHSRaLC4dcz-YEecgldtzhYmaXFBCLiGubm8cfVTHtF79rUOO65UuaKOa18_JoBGAJiNtHUaT-rBrZOlA.png'
+        }
+        width={500}
+        height={500}
+      />
       <div>
         <button onClick={fetchData}>fetchData</button>
       </div>

@@ -5,16 +5,14 @@ import { useState, useEffect } from 'react';
 const isMockingMode = true;
 
 export const MSWComponent = () => {
-  const [mswReady, setMSWReady] = useState(!isMockingMode);
+  const [mswReady, setMSWReady] = useState(false);
 
   useEffect(() => {
     const init = async () => {
-      if (isMockingMode) {
-        // const { initMocks } = await import('./index');
-        const initMocks = await import('./index').then(res => res.initMocks);
-        await initMocks();
-        setMSWReady(true);
-      }
+      // const { initMocks } = await import('./index');
+      const initMocks = await import('./index').then(res => res.initMocks);
+      await initMocks();
+      setMSWReady(true);
     };
 
     if (!mswReady) {
